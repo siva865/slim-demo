@@ -1,7 +1,9 @@
 import { FaFire, FaDumbbell, FaHeartbeat, FaClock, FaPhone, FaMapMarker, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 import { GiWeightLiftingUp, GiRunningShoe } from 'react-icons/gi';
+import { useState } from 'react';
 
 function SlimNTrim() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const programs = [
     {
       icon: <FaFire className="text-red-500 text-4xl" />,
@@ -39,36 +41,100 @@ function SlimNTrim() {
   ];
 
   return (
-    <div className="font-sans">
-      {/* Navigation */}
-      <nav className="bg-gradient-to-r from-purple-800 to-blue-600 text-white p-4 sticky top-0 z-50">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold tracking-wider">SLIM 'N' TRIM</h1>
-          <div className="hidden md:flex space-x-6">
-            <a href="#home" className="hover:text-yellow-300 transition">Home</a>
-            <a href="#programs" className="hover:text-yellow-300 transition">Programs</a>
-            <a href="#trainers" className="hover:text-yellow-300 transition">Trainers</a>
-            <a href="#schedule" className="hover:text-yellow-300 transition">Schedule</a>
-            <a href="#contact" className="hover:text-yellow-300 transition">Contact</a>
-          </div>
-          <button className="bg-yellow-400 text-purple-900 px-4 py-2 rounded-full font-bold hover:bg-yellow-300 transition md:hidden">
-            Menu
-          </button>
+   
+
+<div className="font-sans">
+  {/* Navigation */}
+  <nav className="bg-gradient-to-r from-purple-800 to-blue-600 text-white p-4 sticky top-0 z-50">
+    <div className="container mx-auto flex justify-between items-center">
+      <h1 className="text-2xl font-bold tracking-wider">SLIM 'N' TRIM</h1>
+      
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex space-x-6">
+        <a href="#home" className="hover:text-yellow-300 transition">Home</a>
+        <a href="#programs" className="hover:text-yellow-300 transition">Programs</a>
+        <a href="#trainers" className="hover:text-yellow-300 transition">Trainers</a>
+        <a href="#schedule" className="hover:text-yellow-300 transition">Schedule</a>
+        <a href="#contact" className="hover:text-yellow-300 transition">Contact</a>
+      </div>
+      
+      {/* Mobile Menu Button */}
+      <button 
+        className="md:hidden focus:outline-none"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        <svg 
+          className="w-6 h-6" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {isMobileMenuOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+    </div>
+    
+    {/* Mobile Menu Dropdown */}
+    {isMobileMenuOpen && (
+      <div className="md:hidden bg-purple-900 mt-2 py-2 rounded-lg">
+        <div className="flex flex-col space-y-3 px-4">
+          <a 
+            href="#home" 
+            className="hover:text-yellow-300 transition py-2 border-b border-purple-700"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Home
+          </a>
+          <a 
+            href="#programs" 
+            className="hover:text-yellow-300 transition py-2 border-b border-purple-700"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Programs
+          </a>
+          <a 
+            href="#trainers" 
+            className="hover:text-yellow-300 transition py-2 border-b border-purple-700"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Trainers
+          </a>
+          <a 
+            href="#schedule" 
+            className="hover:text-yellow-300 transition py-2 border-b border-purple-700"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Schedule
+          </a>
+          <a 
+            href="#contact" 
+            className="hover:text-yellow-300 transition py-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Contact
+          </a>
         </div>
-      </nav>
+      </div>
+    )}
+  </nav>
+
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="text-center z-10 px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">TRANSFORM YOUR BODY</h1>
-          <p className="text-xl text-yellow-300 mb-8">Where fitness meets lifestyle</p>
-          <button className="bg-yellow-400 text-purple-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition">
-            JOIN TODAY
-          </button>
-        </div>
-      </section>
-
+<section id="home" className="relative h-screen flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b')] bg-cover bg-center">
+  <div className="absolute inset-0 bg-black opacity-50"></div>
+  <div className="text-center z-10 px-4">
+    <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">TRANSFORM YOUR BODY</h1>
+    <p className="text-xl text-yellow-300 mb-8">Where fitness meets lifestyle</p>
+    <button className="bg-yellow-400 text-purple-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition">
+      JOIN TODAY
+    </button>
+  </div>
+</section>
       {/* Programs Section */}
       <section id="programs" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
